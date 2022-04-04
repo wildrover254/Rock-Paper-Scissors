@@ -1,9 +1,6 @@
-let playerSelection;
-
-function playerPlay() {
-    const input = prompt("Please choose Rock, Paper or Scissors.")
-    return playerSelection = input.toLowerCase();
-}
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
 
 function computerPlay() {
     const plays = ["rock", "paper", "scissors"];
@@ -35,10 +32,14 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i< 5; i++) {
-        playRound(playerPlay(), computerPlay())
-    }
-}
+rock.addEventListener('click', (e) => {
+    playRound('rock', computerPlay());
+});
 
-game();
+paper.addEventListener('click', (e) => {
+    playRound('paper', computerPlay());
+});
+
+scissors.addEventListener('click', (e) => {
+    playRound('scissors', computerPlay());
+});
