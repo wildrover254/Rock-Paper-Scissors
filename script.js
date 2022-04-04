@@ -1,18 +1,27 @@
+//Variables storing targets of necessary elements
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 const roundResults = document.getElementById('round_results');
 const playerDisplay = document.getElementById('player_score');
 const compDisplay = document.getElementById('comp_score');
+
+//Variables holding scores
 let playerScore = 0;
 let compScore = 0; 
 
+//Function to randomly return a play for the computer
 function computerPlay() {
     const plays = ["rock", "paper", "scissors"];
     const num = Math.floor(Math.random() * 3);
     return plays[num];
 }
 
+/*
+ *Function checks whether eith player has won five rounds
+ *Pops an alert with displaying the winner.
+ *Reloads the page when the alert is cleared
+*/
 function gameOver(playerScore, compScore) {
     if(playerScore === 5) {
         alert("Game over! You win!");
@@ -23,6 +32,11 @@ function gameOver(playerScore, compScore) {
     }
 };
 
+/*
+ *Function takes in the player selection and computer selection,
+ *then checks for a winner. Increments and displays scores.
+ *Runs gameOver function
+*/
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'rock' && computerSelection == 'paper') {
         roundResults.innerText = 'Computer wins! Paper covers Rock.';
@@ -65,6 +79,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//Event listeners for the player choice buttons. Plays a round on click.
 rock.addEventListener('click', (e) => {
     playRound('rock', computerPlay());
 });
