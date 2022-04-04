@@ -1,6 +1,11 @@
 const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
+const roundResults = document.getElementById('round_results');
+const playerDisplay = document.getElementById('player_score');
+const compDisplay = document.getElementById('comp_score');
+let playerScore = 0;
+let compScore = 0; 
 
 function computerPlay() {
     const plays = ["rock", "paper", "scissors"];
@@ -8,27 +13,55 @@ function computerPlay() {
     return plays[num];
 }
 
+function gameOver(playerScore, compScore) {
+    if(playerScore === 5) {
+        alert("Game over! You win!");
+        location.reload()
+    } else if (compScore === 5) {
+        alert("Game Over! The computer wins!");
+        location.reload();
+    }
+};
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'rock' && computerSelection == 'paper') {
-        console.log('Computer wins! Paper covers Rock.');
+        roundResults.innerText = 'Computer wins! Paper covers Rock.';
+        compScore++;
+        compDisplay.innerText = compScore;
+        gameOver(playerScore, compScore);
     }  else if(playerSelection == 'rock' && computerSelection == 'scissors') {
-        console.log('Player wins! Rock breaks Scissors.');
+        roundResults.innerText = 'Player wins! Rock breaks Scissors.';
+        playerScore++;
+        playerDisplay.innerText = playerScore;
+        gameOver(playerScore, compScore);
     } else if(playerSelection == 'rock'  && computerSelection == 'rock') {
-        console.log('Rock ties with Rock.');
+        roundResults.innerText = 'Rock ties with Rock.';
     } else if(playerSelection == 'paper' && computerSelection == 'paper') {
-        console.log('Paper ties with Paper.');
+        roundResults.innerText = 'Paper ties with Paper.';
     } else if(playerSelection == 'paper' && computerSelection == 'scissors') {
-        console.log('Computer wins! Scissors cuts Paper.');
+        roundResults.innerText = 'Computer wins! Scissors cuts Paper.';
+        compScore++;
+        compDisplay.innerText = compScore;
+        gameOver(playerScore, compScore);
     } else if(playerSelection == 'paper' && computerSelection == 'rock') {
-        console.log('Player wins! Paper covers Rock.');
+        roundResults.innerText = 'Player wins! Paper covers Rock.';
+        playerScore++;
+        playerDisplay.innerText = playerScore;
+        gameOver(playerScore, compScore);
     } else if(playerSelection == 'scissors' && computerSelection == 'paper') {
-        console.log('Player wins! Scissors cuts paper.');
+        roundResults.innerText = 'Player wins! Scissors cuts paper.';
+        playerScore++;
+        playerDisplay.innerText = playerScore;
+        gameOver(playerScore, compScore);
     } else if(playerSelection == 'scissors' && computerSelection == 'scissors') {
-        console.log('Scissors ties with Scissors.');
+        roundResults.innerText = 'Scissors ties with Scissors.';
     } else if(playerSelection == 'scissors' && computerSelection == 'rock') {
-        console.log('Computer wins! Rock breaks Scissors.');
+        roundResults.innerText = 'Computer wins! Rock breaks Scissors.';
+        compScore++;
+        compDisplay.innerText = compScore;
+        gameOver(playerScore, compScore);
     } else {
-        console.log("That's not a valid play here.");
+        roundResults.innerText = "That's not a valid play here.";
     }
 }
 

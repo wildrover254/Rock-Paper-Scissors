@@ -9,15 +9,23 @@
 <body>
     <header>
         <h1>Play Rock Paper Scissors!</h1>
+        <h2>How to play:</h2>
+        <ol>
+            <li>Click on ROCK, PAPER or SCISSORS to make a play.</li>
+            <li>The computer will make its choice and the results will be displayed.</li>
+            <li>The first player to five points is declared the winner.</li>
+        </ol>
     </header>
     <main>
-        <div id="buttons">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+        <div class="container">
+            <button id="rock">ROCK</button>
+            <button id="paper">PAPER</button>
+            <button id="scissors">SCISSORS</button>
         </div>
-        <div id="results">
-            <p>Round results will be displayed here.</p>
+        <div class="container">
+            <h3>Player Score: <span id="player_score">0</span></h3>
+            <h3>Computer Score: <span id="comp_score">0</span></h3>
+            <p id="round_results">Click a button to start the game!</p>
         </div>
     </main>
     
